@@ -1,0 +1,221 @@
+@import "compass/css3";
+
+$gray:      #484b50;
+$red:				#9e1326;
+$white:     #fff;
+
+header {
+  width:100%;
+  background:$gray;
+  height:80px;
+  position:relative;
+
+  h1 {
+   font-family: 'Raleway', sans-serif;
+    font-size:30px;
+    line-height:40px;
+    font-weight:600;
+      :hover {
+          color:$red;
+        }
+    a {
+      text-decoration:none;
+      color:#fff;
+      }
+   }
+}
+
+.logo {
+  float:left;
+  width:15%;
+  margin-left:20px;
+  margin-top:20px;
+}
+
+.menu {
+  width:80%;
+  float:right;
+  display:inline-block;
+  text-align:right;
+  margin-top:30px; 
+  font-family: 'Raleway', sans-serif;
+  font-weight:300;
+  text-transform:uppercase;
+  letter-spacing:3px;
+
+  
+  li {  
+   
+    display:inline-block;
+    padding:0 1% ;
+    border-right:thin solid $red;
+    &:last-child{
+      border:none;
+    }
+    :hover {
+      color:darken($red, 9%);
+      }
+    
+    a {
+      color:$white;
+      text-decoration:none;
+      font-size:16px;
+      padding:0;
+      }
+   } 
+}
+
+ .clearfix:after {
+   content: " ";
+   visibility: hidden;
+   display: block;
+   height: 0;
+   clear: both;
+}
+
+//*--------------------900------------------//
+@media (max-width: 900px) {
+  
+  .menu {
+     
+     text-align:right;
+   
+    
+    li {
+    display:inline-block;
+    
+      
+      a {
+    
+        text-decoration:none;
+        font-size:16px; 
+      }
+    }
+  }
+  
+}
+
+//*-----------------650---------------------//
+@media (max-width: 650px) {
+  
+  .logo {
+    width:70%; 
+  }
+    
+  .menu {
+     text-align:left;
+     width:100%;
+     margin-top:18px; 
+     background:$gray; 
+   
+    
+    li {
+     display:none;
+     width:100%;
+     padding:0;
+     margin:0;
+      
+         :hover {
+           background:lighten($gray ,5% );
+           @include transition-duration(.5s);
+          }
+      a {
+        display:table;
+        width:100%;
+        color:$white;
+        text-decoration:none;
+        font-size:20px;
+        padding:20px;
+        overflow:hidden; 
+        border-bottom:thin solid #555;
+      }
+    }
+  }
+  .burger {
+    width: 70px;
+    height: 70px;
+    display: block;
+    background: $red;
+    @include transition(all .6s ease-in-out);
+    
+    // Remove the below styles - only used to center anchor on page
+    position: absolute;
+    top: 5px;
+    right: -25px;
+    @include translate(-50%, 0);
+    // Remove above //
+    
+    i {
+      display: block;
+      width: 40px;
+      height: 2px;
+      background: $white;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      @include translate(-50%, -50%);
+      @include transition(all .2s ease-in-out);
+      &:before,
+      &:after {
+        content: '';
+        position: absolute;
+        height: 2px;
+        background: $white;
+        width: 40px;
+        top: 50%;
+        left: 50%;
+        @include translate(-50%, -50%);
+        @include transition(all .2s ease-in-out);
+      }
+      &:before {  
+        margin-top: -12px;
+      }
+      &:after {
+        margin-top: 12px;
+      }
+    }
+    &:hover {
+      background: darken($red, 9%);
+      i {
+        
+        &:before {
+          margin-top: -14px;
+        }
+        &:after {
+          margin-top: 14px;
+        }
+      }
+    }
+    &.active {
+      background: $red;
+      i {
+        background: transparent;
+        &:before,
+        &:after {
+          left: -5px;
+          width: 50px;
+        }
+        &:before {
+          @include rotate(45deg);
+          top: 12px;
+        }
+        &:after {
+          @include rotate(-45deg);
+          top: -12px;
+        }
+      }
+      &:hover {
+        background: darken($red, 9%);
+        i {
+          &:before,
+          &:after {
+            width: 60px;
+            margin: 0;
+            left: -10px;
+            top: 0;
+          }
+        }
+      }
+    }
+  }
+}
